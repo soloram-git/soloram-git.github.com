@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Колонисты</title>
+<style>
+form {margin: 0px 0px 0px 0px;}
+.ram1{border: 1px solid #483D8B;background-color:#87CEEB;margin-top:1px;font-size:small;}
+.ram2{border: 1px solid #00008B;background-color:#8FAFFF;font-weight:bold;width:120px;margin-top:1px;padding:0 0 0 0;}
+.ram2:hover{background-color:#509AFF;}
+.ram3{border: 1px solid #483D8B;background-color:#87CEEB;width:120px;margin-top:1px;}
+.ram4{border: 1px solid #00008B;background-color:#8FAFFF;width:59px;margin-top:1px;padding:0 0 0 0;}
+.ram21{border: 1px solid #00008B;background-color:#8FAFFF;height:25px;font-weight:bold;width:120px;margin-top:1px;padding:0 0 0 0;}
+.ram21:hover{background-color:#509AFF;}
+.ram31{border: 1px solid #483D8B;background-color:#87CEEB;height:25px;width:120px;margin-top:1px;}
+.ram41{border: 1px solid #00008B;background-color:#8FAFFF;height:25px;width:59px;margin-top:1px;padding:0 0 0 0;}
+.ram41:hover{background-color:#509AFF;}
+.ram5{border: 1px dotted #D2691E;background-color:#8FBC8F;margin-top:1px;text-align:justify;}
+.ram6{border: 1px dotted #DAA520;background-color:#DFDD66;margin-top:1px;}
+a{text-decoration:none;} 
+a:hover{text-decoration:underline;color:#00008B;}
+hr{width:90%;color:#483D8B;}
+i{font-family:Times New Roman;}
+.line{background: #6495ED;border-top: 1px solid #00008B;border-bottom: 1px solid #00008B;font-weight: bold;color: #000000;text-align:center;}
+.abzac{text-indent:25px;margin:0px 0px 0px 0px;text-align:justify;}
+.zag{text-decoration:underline;font-weight:bold;}
+.error{color:#FF0000;font-style:italic;font-weight:bold;font-family:Times New Roman;}
+.gmess{color:#228B22;font-style:italic;font-weight:bold;font-family:Times New Roman;}
+.c1{color:#FFFFFF;}
+.c2{color:#1E90FF;}
+.c3{color:#4B0082;}
+.c4{color:#006400;}
+.c5{color:#FFD700;}
+.c6{color:#FF5A00;}
+.c7{color:#800000;}
+.red{color:#FF0000;}
+.bb{border: 1px solid #8B0000;background-color:#F08080;width:14px;height:14px;margin:1px 1px 1px 1px;float:left;font-size:12px;}
+.gb{border: 1px solid #006400;background-color:#228B22;width:14px;height:14px;margin:1px 1px 1px 1px;float:left;font-size:12px;}
+</style>
+<script>
+var u=new Array();
+u[1]=5000000000;
+u[2]=2500000000;
+u[3]=1250000000;
+u[4]=625000000;
+u[5]=312000000;
+u[6]=156250000;
+u[7]=78125000;
+u[8]=39062500;
+u[9]=19531250;
+u[10]=9765625;
+stone="0";
+var plus=0;
+var lvl=0;
+var maxw=0;
+var mir=0;
+document.onkeydown=function(e) {
+e=e||event;
+if(e.keyCode==49)//1
+{
+if(lvl>=0&&lvl<10) {
+lvl+=1;
+document.getElementsByTagName("span")["uroven"].innerHTML="Уровень "+lvl+"";
+if(lvl>0) vll=lvl*10;
+else vll=1;
+}
+}
+if(e.keyCode==48)//0
+{
+if(lvl>0&&lvl<=10) {
+lvl-=1;
+document.getElementsByTagName("span")["uroven"].innerHTML="Уровень "+lvl+"";
+if(lvl>0) vll=lvl*10;
+else vll=1;
+}
+}
+}
+function fnu() {
+if(stone=="0")
+{mir+=1;
+var pp=plus+1;
+rand=Math.floor(Math.random() * (10000000000 - 1 + 1)) + 1;
+if(parseInt(rand)>0&&parseInt(rand)<parseInt(u[pp]+u[pp]/vll)) { plus+=1; document.getElementsByName("hashxb")[1].innerHTML="Улучшение прошло успешно!"; document.getElementsByName("hashxb")[0].innerHTML="";}
+else { plus=0; document.getElementsByName("hashxb")[1].innerHTML=""; document.getElementsByName("hashxb")[0].innerHTML="Улучшение не удалось.";}
+if(plus>maxw) {maxw=plus; document.getElementsByTagName("span")["rres"].innerHTML="Максимум: "+maxw+".";}
+document.getElementsByTagName("span")["mir"].innerHTML="Миражи: "+mir+".";
+if(plus==0) document.getElementsByTagName("span")["klsa"].innerHTML="";
+document.getElementsByTagName("span")["klsa"].innerHTML="+"+plus;
+}
+if(stone=="3")
+{mir+=1;
+var pp=plus+1;
+rand=Math.floor(Math.random() * (10000000000 - 1 + 1)) + 1;
+if(parseInt(rand)>0&&parseInt(rand)<parseInt(u[pp]+u[pp]/vll)) { plus+=1; document.getElementsByName("hashxb")[1].innerHTML="Улучшение прошло успешно!"; document.getElementsByName("hashxb")[0].innerHTML="";}
+else { document.getElementsByName("hashxb")[1].innerHTML=""; document.getElementsByName("hashxb")[0].innerHTML="Улучшение не удалось.";}
+if(plus>maxw) {maxw=plus; document.getElementsByTagName("span")["rres"].innerHTML="Максимум: "+maxw+".";}
+document.getElementsByTagName("span")["mir"].innerHTML="Миражи: "+mir+".";
+if(plus==0) document.getElementsByTagName("span")["klsa"].innerHTML="";
+document.getElementsByTagName("span")["klsa"].innerHTML="+"+plus;
+}
+setTimeout(arguments.callee, 20);
+}
+</script>
+</head>
+<body link=#0000FF vlink=#0000FF style="font-size:18px;font-family: Tahoma,Tahoma, sans-serif, Times New Roman;background-color:#B0B0B0;margin: 1px 1px 1px 1px;color: #101010;">
+<div align="center">
+<div class="line"><span id="uroven">Уровень 0</span> <span id="rres"></span> <span id="mir"></span></div>
+<div  style="max-width:300px;">
+<div name="hashxb" class="error"></div>
+<div name="hashxb" class="gmess"></div>
+<div class="zag"><span class="c4">Белая фигня <span style="" id="klsa"></span></span></div><br />
+	  <div class="c3">Миражи: 722</div>
+	  <form class="ram5">
+	  <center><b>Использовать:</b></center>
+	  <input type="radio" name="dpb" value="0" onclick="stone=0" checked/> Ничего<br />
+	  <input type="radio" name="dpb" value="1" onclick="stone=1"/> Небесный камень: 131<br />
+	  <input type="radio" name="dpb" value="2" onclick="stone=2" /> Земной камень: 1<br />
+	  <input type="radio" name="dpb" value="3" onclick="stone=3" /> Камень равновесия: 0<br />
+	  <center><input type="button" class="ram2" value="улучшить" onclick="fnu()"/><input type="button" class="ram2" value="+" onclick="fnu('start')"/></center>
+	  </form>
+	  <br /><a href="">Назад</a><br />
+<a href="">На главную</a></div></div><div class="line">
+=© Created by <span style="color:#FF0000;">Alek</span>, 2011=</div></body></html>
