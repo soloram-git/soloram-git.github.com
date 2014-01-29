@@ -77,7 +77,7 @@ else vll=1;
 }
 }
 function fnu() {
-
+document.getElementsByTagName("span")["uroven"].innerHTML="Уровень "+lvl+"";
 
 if(plus!=10) {
 mir+=1;
@@ -116,15 +116,14 @@ setTimeout(arguments.callee, 20);
 <div name="hashxb" class="error"></div>
 <div name="hashxb" class="gmess"></div>
 <div class="zag"><span class="c4">Белая фигня <span style="" id="klsa"></span></span></div><br />
-	  <div class="c3">Миражи: 722</div>
+	  <div class="c3">Миражи: NaN</div>
 	  <form class="ram5">
 	  <center><b>Использовать:</b></center>
 	  <input type="radio" name="dpb" value="0" onclick="stone=0" checked/> Ничего<br />
-	  <input type="radio" name="dpb" value="1" onclick="stone=1"/> Небесный камень: 131<br />
-	  <input type="radio" name="dpb" value="2" onclick="stone=2" /> Земной камень: 1<br />
-	  <input type="radio" name="dpb" value="3" onclick="stone=3" /> Камень равновесия: 0<br />
-	  <center><input type="button" class="ram2" value="улучшить" onclick="fnu()"/><input type="button" class="ram2" value="null" onclick="plus=0; ravn=0; mir=0;"/></center>
-	  </form>
+	  <input type="radio" name="dpb" value="1" onclick="stone=1"/> Небесный камень: NaN<br />
+	  <input type="radio" name="dpb" value="2" onclick="stone=2" /> Земной камень: NaN<br />
+	  <input type="radio" name="dpb" value="3" onclick="stone=3" /> Камень равновесия: NaN<br />
+	  <center><input type="button" class="ram2" value="улучшить" onclick="fnu()"/><input type="button" class="ram2" value="null" onclick="lvl=10; vll=100; plus=0; ravn=0; mir=0;"/></center>	  </form>
 	  <br /><a href="">Назад</a><br />
 <a href="">На главную</a></div></div><div class="line">
 =© Created by <span style="color:#FF0000;">Alek</span>, 2011=</div></body></html>
