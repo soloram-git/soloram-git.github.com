@@ -1,0 +1,608 @@
+﻿<html>
+<head>
+<title>ГБОУ СПО БТТ</title>
+<script src="jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="jquery_c.js"></script>
+				<script>
+function sstyle( elem ) {
+    if ( elem.ownerDocument && elem.ownerDocument.defaultView ) {
+        return elem.ownerDocument.defaultView.getComputedStyle( elem, null );
+    } else if ( elem.currentStyle ) {
+        return elem.currentStyle;
+    }
+    return null;
+}
+
+
+
+ $(document).ready(function(){
+    $("#menu-left-button").mouseenter(function () {
+          $("#desktop").animate({
+          opacity: '+=0.25',
+          width: 'hide'
+      }, 500),
+      $("#menu").animate({
+        opacity: '+=0.25',
+        width: 'toggle'
+        }, 500);  
+});   
+
+    $("#desktop-right-button").mouseenter(function () {
+     $("#menu").animate({
+        opacity: '+=0.25',
+        width: 'hide'
+        }, 500),
+          $("#desktop").animate({
+          opacity: '+=0.25',
+          width: 'toggle'
+      }, 500);
+});   
+
+  });
+	$(document).ready(function() {
+	// Create two variable with the names of the months and days in an array
+	var monthNames = [ "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря" ]; 
+	var dayNames= ["Воскресенье - ","Понедельник - ","Вторник - ","Среда - ","Четверг - ","Пятница - ","Суббота - "]
+
+	// Create a newDate() object
+	var newDate = new Date();
+	// Extract the current date from Date object
+	newDate.setDate(newDate.getDate());
+	// Output the day, date, month and year    
+	$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+	setInterval( function() {
+		// Create a newDate() object and extract the seconds of the current time on the visitor's
+		var seconds = new Date().getSeconds();
+		// Add a leading zero to seconds value
+		$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+		},1000);
+		
+	setInterval( function() {
+		// Create a newDate() object and extract the minutes of the current time on the visitor's
+		var minutes = new Date().getMinutes();
+		// Add a leading zero to the minutes value
+		$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+		},1000);
+		
+	setInterval( function() {
+		// Create a newDate() object and extract the hours of the current time on the visitor's
+		var hours = new Date().getHours();
+		// Add a leading zero to the hours value
+		$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+		}, 1000);
+		
+	}); 
+var manu=1;
+
+//mouse
+
+function addHandler(object, event, handler, useCapture) {
+     if (object.addEventListener) {
+         object.addEventListener(event, handler, useCapture ? useCapture : false);
+     } else if (object.attachEvent) {
+         object.attachEvent('on' + event, handler);
+     } else alert("Add handler is not supported");
+}
+element=document.getElementById("menu");
+// Добавляем обработчики
+/* Gecko */
+// addHandler(window, 'DOMMouseScroll', wheel);
+/* Opera */
+ addHandler(window, 'mousewheel', wheel);
+/* IE */
+ //addHandler(document, 'mousewheel', wheel);
+// Обработчик события
+function wheel(event) {
+     var delta; // Направление скролла
+     // -1 - скролл вниз
+     // 1  - скролл вверх
+     event = event || window.event;
+     // Opera и IE работают со свойством wheelDelta
+     if (event.wheelDelta) {
+         delta = event.wheelDelta / 120;
+         // В Опере значение wheelDelta такое же, но с противоположным знаком
+         if (window.opera) delta = delta;
+     // В реализации Gecko получим свойство detail
+     } else if (event.detail) {
+         delta = -event.detail / 3;
+     }
+     // Запрещаем обработку события браузером по умолчанию
+     if (event.preventDefault)  event.preventDefault();
+     event.returnValue = false;
+//if(sstyle(element).display!="none") {
+
+if(delta<0) {
+if(manu>=1&&manu<=5) {
+el=document.getElementsByName("menu_content_"+manu)[0];
+el.style.display="none";
+if(manu<5) manu=manu+1;
+document.getElementsByName("menu_content_"+manu)[0].style.display="block";
+}
+}
+
+if(delta>0) {
+if(manu>=1&&manu<=5) {
+el=document.getElementsByName("menu_content_"+manu)[0];
+el.style.display="none";
+if(manu>1) manu=manu-1;
+document.getElementsByName("menu_content_"+manu)[0].style.display="block";
+}
+}
+//}
+}
+
+
+//mouse
+
+
+$(document).ready(function() {
+    $('#photo_slide').Carousel({
+		visible: 1,
+        rotateBy: 1,
+		speed: 1000,                       
+		auto: 2000,
+        position: "v",
+		backslide: true,
+		margin: 0                      
+	});
+});
+
+
+
+
+function load_content(ca) {
+if(ca!="") {
+ $(document).ready(function(){
+          $("#menu").animate({
+          opacity: '+=0.25',
+          width: 'hide'
+      }, 500);
+	 });
+$("#content").html('<h3>'+ca+'</h3>');
+}			
+}			
+
+
+
+
+
+
+
+
+
+function openMenu() {
+element=document.getElementById("menu");
+if(style(element).visibility=="hidden") element.style.visibility="visible"; else element.style.visibility="hidden";
+
+
+}
+//(function() {
+function load_inf(block, text) {
+element=document.getElementsByName(block)[0];
+element.style.visibility="visible";
+element.innerHTML=text;
+
+//alert("a");
+}
+function unload_inf(block) {
+
+element=document.getElementsByName(block)[0];
+element.style.visibility="hidden";
+}
+
+ 
+//})();
+</script>
+<style>
+
+.plits_1 {
+width: 128px;
+height: 128px;
+margin: 5px;
+background: #3366CC;
+opacity: 1;
+z-index: 3;
+color: #ffffff;
+text-align: center;
+}
+.plits_2 {
+width: 256px;
+height: 128px;
+margin: 5px;
+background: #2255BB;
+opacity: 1;
+z-index: 3;
+color: #ffffff;
+text-align: center;
+font-size: 16pt;
+font-family: verdana;
+
+}
+.plits_1:hover {
+width: 128px;
+height: 128px;
+margin: 5px;
+background: #2255BB;
+opacity: 1;
+z-index: 3;
+
+}
+.plits_2:hover {
+width: 256px;
+height: 128px;
+margin: 5px;
+background: #2244AA;
+opacity: 1;
+z-index: 3;
+}
+.plits_3 {
+width: 128px;
+height: 256px;
+margin: 5px;
+background: #3366CC;
+opacity: 1;}
+.wass {
+width: 100%;
+height: 28px;
+color: #ffffff;
+text-align: left;
+margin: 100px 0 0 0;
+background: #000000;
+visibility: hidden;
+opacity: 0.5;
+}
+#menu {
+width: 95.1%;
+height: 100%;
+position: absolute;
+background: rgba(153,204,255,1);
+background: linear-gradient(to top, #ffffff, #99CCFF);
+z-index: 2;
+left: 3%;
+display: none;
+overflow: auto;
+
+}
+body {
+margin: 0px;
+background: #ffffff;
+z-index: 0;
+}
+#menu-left-button {
+width: 3%;
+min-height: 100%;
+background: #3399FF;
+float: left;
+position: fixed;
+z-index: 1;
+}
+#menu-left-button:hover {
+background: #0066CC;
+}
+#desktop-right-button {
+width: 2%;
+min-height: 100%;
+background: #3399FF;
+float: right;
+right: 0;
+position: fixed;
+z-index: 1;
+}
+#desktop-right-button:hover {
+background: #0066CC;
+}
+
+#zagolovok {
+border-bottom: 1px solid #000000;
+width: 50%;
+min-height: 25px;
+margin: 5% 0 0 15%;
+font-weight: bold;
+font-size: 18pt;
+font-family: Courier New;
+border-left: 1px solid #000000;
+z-index: 0;
+}
+#cont {
+border-left: 1px solid #000000;
+width: 45%;
+min-height: 60%;
+padding: 15px;
+margin: 0% 0 0 15%;
+font-size: 14pt;
+font-family: comic sans ms;
+position: absolute;
+text-align: justify;
+z-index: 0;
+}
+#b {
+color: #ffffff;
+font-size: 18pt;
+text-align: center;
+font-family: Arial Black;
+overflow: hidden;
+}
+#one_break {
+width: 70%;
+//border-bottom: 1px solid #333333;
+color: #000033;
+font-size: 24pt;
+font-family: courier new;
+text-align: right;
+position: relative;
+margin: 30px 0 5px 20%;
+}
+#t {
+margin: 15% 0 0 0;
+
+}
+#desktop {
+width: 95.1%;
+height: 100%;
+position: absolute;
+background: rgba(153,204,255,1);
+background: linear-gradient(to top, #ffffff, #99CCFF);
+z-index: 2;
+right: 2%;
+display: none;
+overflow: auto;
+
+}
+
+
+
+/* Часы */
+
+
+.clock {
+	width:300px; 
+	margin:1% 1%; 
+	padding:30px; 
+	color:#0033CC; 
+}
+
+#Date {
+	font-family: arial black; 
+	font-size:18pt; 
+	text-align:center; 
+	text-shadow:0 0 5px #ffffff; 
+}
+
+b {
+	width:300px; 
+	margin:0 auto; 
+	padding:0px; 
+	list-style:none; 
+	text-align:center; 
+}
+
+b {
+	display:inline; 
+	font-size: 38pt; 
+	text-align:center; 
+	font-family: arial black;
+	text-shadow:0 0 15px #ffffff; 
+} 
+/* Блоки */
+.block_desktop {
+width: 350px;
+min-height: 400px;			
+float: left;
+margin: 10px;
+border: 1px solid #000022;
+position: absolute;
+left: 0;
+top: 200;
+}
+.block_name {
+width: 350px;
+height: 25px;
+background: #0066FF;
+color: #ffffff;
+font-weight: bold;
+text-align: center;			
+}			
+.block_content {
+width: 350px;
+min-height: 375px;
+background: #eeeeff;
+			
+}
+#content {
+float: left;
+width: 95%;
+min-height: 100%;
+background: #ffffff;
+margin: 0 2% 0 3%;			
+}			
+#photo_slide {
+float: left;
+width: 800px;
+min-height: 400px;
+}		
+ul { 
+	list-style:none; 
+}
+li {
+width: 800px;
+min-height: 400px;			
+}
+#slide_img {
+width: 500px;
+min-height: 400px;
+float: left;			
+}
+#slide_txt {
+width: 300px;
+min-height: 400px;			
+float: left;
+}			
+</style>
+</head>
+<body>
+<div id="desktop">
+<div style="width: 100%">
+<span style="float: left; margin: 0; width: 300px;">
+	<div class="clock">
+	<div id="Date"></div><br>
+		<b class="yy" id="hours"> </b>
+		<b class="yy" id="point">:</b>
+		<b class="yy" id="min"> </b>
+		<b class="yy" id="point">:</b>
+		<b class="yy" id="sec"> </b>
+	</div>
+</span>
+
+<span style="float: left; margin: 30px 100px 0px 150px;">
+<div style="font-size: 88pt; color: #ffffff; font-family: impact; text-align: left;">
+ГБОУ СПО БТТ
+</div>
+</div>
+<span class="block_desktop">
+<div class="block_name">Последние новости</div>
+<div class="block_content">Без api работать не будет</div>
+</span>
+
+<span class="block_desktop" style="width: 550px; left: 500px;">
+<div class="block_name" style="width: 550px;">Расписание уроков</div>
+<div class="block_content" style="width: 550px;">Только после связывания с БД.</div>
+</span>
+
+
+			
+</span>		
+
+
+</div>
+<div id="menu">
+<div style="margin: 30px 0 0 100px; width: 70%; color: #003366; font-size: 64pt; font-family: courier new;">Меню</div>
+
+<div name="menu_content_1" style="display: block;">
+<div id="one_break">Главное</div>
+<div style="position: absolute; left: 15%;">
+<span class="plits_2" style="float: left;" onclick="load_content('Студенческая жизнь - это тра-та-та');"><div id="t">Студенческая жизнь</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Расписание  - это пурум-пурум');"><div id="t" style="margin: 18%;">Расписание</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Электронный журнал не может работать связываясь с Дневник Ру');"><div id="t">Электронный журнал</div></span>
+</div>
+</div>
+
+
+
+
+
+<div name="menu_content_2" style="display: none;">
+<div id="one_break">О техникуме</div>
+<div style="position: absolute; left: 15%;">
+<span class="plits_2" style="float: left;" onclick="load_content('История техникума мне не известна');"><div id="t">История техникума</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Структура тем более');"><div id="t">Структура техникума</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Администрация всегда права, а в случае её не правоты попрубуй доказать это');"><div id="t" style="margin: 18%;">Администрация</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Педагогические работники буду загружены через json');"><div id="t">Педагогические работники</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Мда..');"><div id="t">Материально-техническая база</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Достижения техникума в международной технической борьбе');"><div id="t">Наши достижения</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('Вакансии');"><div id="t">Вакансии</div></span>
+
+</div>
+</div>
+
+
+
+
+
+<div name="menu_content_3" style="display: none;">
+<div id="one_break">Документы</div>
+<div style="position: absolute; left: 15%;">
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Устав</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t" style="margin: 18%;">Лицензия</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Приложение к лицензии</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Свидетельство об аккредитации</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Приложение к свидетельству</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Финансово-хозяйственная деятельность</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Паспорт</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Отчёт о самообследовании</div></span>
+
+</div>
+</div>
+<div name="menu_content_4" style="display: none;">
+<div id="one_break">Абитуриенту</div>
+<div style="position: absolute; left: 15%;">
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Профессии и специальности</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Правила приёма</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Приёмная комиссия</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Приём нпаждан по вопросам образования</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Копия электронного заявления</div></span>
+
+</div>
+</div>
+<div name="menu_content_5" style="display: none;">
+<div id="one_break">Образование</div>
+<div style="position: absolute; left: 15%;">
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Образовательные программы</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Учебные планы</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">ФГОСы</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Методическая работа</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Контингент</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Дополнительные образовательные услуги</div></span>
+<span class="plits_2" style="float: left;" onclick="load_content('0');"><div id="t">Учебная и производственная практика</div></span>
+
+</div>
+</div>
+
+
+
+
+
+</div>
+<span id="menu-left-button"><div id="b" style="margin: 250px 0 0 0; position: relative;">М</div><div id="b">е</div><div id="b">н</div><div id="b">ю</div>
+</span>
+<span id="content">		
+<span id="photo_slide">
+<ul id="lii">
+<li id="lii">
+<span id="slide_img">
+<img src="i/1.jpg" width="500"/>
+</span>
+<span id="slide_txt">
+Описание первого изображения
+</span>
+</li>
+<li id="lii">
+<span id="slide_img">
+<img src="i/2.jpg" width="500"/>
+</span>
+<span id="slide_txt">
+Описание второго изображения
+</span>
+</li>
+<li id="lii">
+<span id="slide_img">
+<img src="i/3.jpg" width="500"/>
+</span>
+<span id="slide_txt">
+Описание третьего изображения
+</span>
+</li>
+<li id="lii">
+<span id="slide_img">
+<img src="i/4.jpg" width="500"/>
+</span>
+<span id="slide_txt">
+Описание четвёртого изображения
+</span>
+</li>
+<li id="lii">
+<span id="slide_img">
+<img src="i/5.jpg" width="500"/>
+</span>
+<span id="slide_txt">
+Описание пятого изображения
+</span>
+</li>			
+</ul>
+</span>
+</span>
+<span id="desktop-right-button"><div id="b" style="margin: 250px 0 0 0; position: relative;">С</div><div id="b">т</div><div id="b">о</div><div id="b">л</div></span>
+
+</body>
+
+</html>
