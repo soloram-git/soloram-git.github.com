@@ -1,0 +1,203 @@
+<html>
+<head>
+<title>Пара аккордов</title>
+<style>
+body {
+width: 100%;
+min-height: 600px;
+background: #222111;
+color: #ffffff;
+margin: auto;
+font-family: comic sans ms;
+}
+#info {
+background: #ffffee;
+border: 5px solid #ffaa00;
+border-radius: 5px;
+width: 50%;
+min-height: 600px;
+margin: 5px 10% 0px 35px;
+float: right;
+overflow: hidden;
+}
+#title {
+width: 100%;
+height: 40px;
+border-bottom: 5px solid #ffaa00;
+color: #ff3300;
+font-size: 24pt;
+border-radius: 0px 0px 10px 10px;
+background: #ffff99;
+text-align: center;
+}
+#text {
+width: 100%;
+margin: 10px;
+color: #000000;
+font-size: 16pt;
+}
+i:hover {
+color:#0000ff;
+}
+#menu {
+background: url("bg.png");
+border: 3px solid #ffffff;
+width: 200px;
+height: 500px;
+margin: 5px;
+float: left;
+overflow: hidden;
+position: absolute;
+
+}
+#guk1 {
+width: 32px;
+height: 50px;
+background: url("guk1.png");
+margin: 0 5px 0 0;
+float: left;
+position: absolute;
+overflow: hidden;
+}
+#guk2 {
+width: 32px;
+height: 50px;
+background: url("guk2.png");
+margin: 0 5px 0 0;
+float: left;
+position: absolute;
+overflow: hidden;
+}
+#wine {
+width: 100%;
+height: 60px;
+background: #ffffff;
+margin: 0 5px 0 0;
+border-top: 1px solid #000000;
+float: left;
+position: absolute;
+overflow: hidden;
+top: 440;
+color: #FF0000;
+}
+</style>
+<script>
+var menu="no";
+var menu_t='<i onclick="mats(\'привет\')">Всем привет!</i><br><i onclick="mats(\'это\')">Что это?</i><br><i onclick="mats(\'пара\')">Пара песенок</i><br>';
+function randint(min, max)
+{
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function loadmenu() {
+if(menu=="yes")
+{
+document.getElementsByTagName("div")["text"].innerHTML="<center>Добро пожаловать!</center>";
+menu="no";
+}
+else
+{
+document.getElementsByTagName("div")["text"].innerHTML=menu_t;
+menu="yes";
+}
+}
+
+
+//https://drive.google.com/uc?id=0B6iitT1f1SMHWnBSYVFCdWFpTFE&export=download - bg (http://goo.gl/B8Hsgj)
+//https://drive.google.com/uc?id=0B6iitT1f1SMHYnhvY0dheFBqQU0&export=download - guk1 (http://goo.gl/qzZ7V0)
+//https://drive.google.com/uc?id=0B6iitT1f1SMHMUkxaVlyc2k1N0k&export=download - guk2 (http://goo.gl/c9yHnr)
+//https://drive.google.com/uc?id=0B6iitT1f1SMHMDNNbzNmYnBUbVE&export=download - 1 (http://goo.gl/2RdTgS)
+//https://drive.google.com/uc?id=0B6iitT1f1SMHeXlNR0VXWGF1ZHM&export=download - 2 (http://goo.gl/HvVSU1)
+//https://drive.google.com/uc?id=0B6iitT1f1SMHV0JpcTRTdUc3Vmc&export=download - 3 (http://goo.gl/2GsEpW)
+function mats(typpe) {
+if(typpe=="привет")
+document.getElementsByTagName("div")["text"].innerHTML="Привет, юзер!<br><img src='nikonov1.jpg' width='70%'/>";
+if(typpe=="это")
+document.getElementsByTagName("div")["text"].innerHTML="Что это?<br>А это маленький пример создания одностраничной справки. Пока не совсем удобный.<br><img src='nikonov2.jpg' width='70%'/>";
+if(typpe=="пара")
+document.getElementsByTagName("div")["text"].innerHTML="Вот-так примерно)))<br><i onclick=\"mats(\'одеяло\')\">Про одеяло</i><br><i onclick=\"mats(\'спартак\')\">Про Спартак</i><br> <img src='nikonov3.jpg' width='70%'/>";
+if(typpe=="одеяло")
+document.getElementsByTagName("div")["text"].innerHTML="Так вот. Песня про одеяло. Про мягкое, тёплое одеяло. <br>CGFGCG#F";
+if(typpe=="спартак")
+document.getElementsByTagName("div")["text"].innerHTML="И песня про Спартак. <br>C#F#G#C#";
+
+}
+function load_menu()
+{
+start="no";
+clearInterval(inted);
+//document.getElementsByTagName("div")["menu"].innerHTML="Меню";
+}
+function game_lload() 
+{
+guk1=document.getElementsByTagName("div")["guk1"].style;
+guk2=document.getElementsByTagName("div")["guk2"].style;
+if((parseInt(guk1.top)<=390)&&(parseInt(guk2.top)<=390))
+{
+
+step1=randint(0, 3);
+step2=randint(0, 3);
+guk1.top=""+(parseInt(guk1.top)+step1);
+guk2.top=""+(parseInt(guk2.top)+step2);
+}
+if((parseInt(guk1.top)>=390)||(parseInt(guk2.top)>=390))
+{
+if(parseInt(guk1.top)>parseInt(guk2.top))
+win="guk1";
+if(parseInt(guk2.top)>parseInt(guk1.top))
+win="guk2";
+if(parseInt(guk1.top)==parseInt(guk2.top))
+win="guk";
+
+}
+if(win=="guk1")
+document.getElementsByTagName("div")["wine"].innerHTML="Красный жук!";
+if(win=="guk2")
+document.getElementsByTagName("div")["wine"].innerHTML="Чёрный жук!";
+if(win=="guk")
+document.getElementsByTagName("div")["wine"].innerHTML="Ничья!";
+
+}
+var start="no";
+
+function unload_menu()
+{
+guk1=document.getElementsByTagName("div")["guk1"].style;
+guk2=document.getElementsByTagName("div")["guk2"].style;
+document.getElementsByTagName("div")["wine"].innerHTML="Результат";
+
+if(start=="no")
+{
+guk1.top="1";
+guk2.top="1";
+
+guk2.left="84%";
+start="yes";
+}
+
+
+
+inted=setInterval("game_lload()", "20");
+
+
+
+
+
+
+
+}
+</script>
+</head>
+<body>
+<div id="menu" onmouseout="unload_menu();" onmouseover="load_menu();">
+<div id="guk1"></div>
+<div id="guk2"></div>
+<div id="wine">Результат</div>
+
+</div>
+<div id="info">
+<div id="title" onclick="loadmenu();">Лёха Никонов</div>
+<div id="text">Всем, всегда!</div>
+</div>
+</body>
+</html>
