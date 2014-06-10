@@ -1,0 +1,67 @@
+<html>
+ <head>
+ <title>Шкала Арьяда</title>
+ <style>
+	body {
+		width: 100%;
+		margin: 0;
+	}	
+			#s {
+			width: 90%;
+			height: 200px;
+			position: absolute;
+			border: 2px solid #000000;
+			left: 5%;
+			top: 50%;
+			}
+			#ss {
+			width: 90%;
+			background: #000000;
+			height: 100%;
+			}
+ </style>
+<script src="jquery-1.11.1.min.js"></script>
+ <script  type="text/javascript">
+	start = 50;
+	step = 1;
+	max = 100;
+	min = 0;		
+	now = -100;
+ function randInt(min, max)
+  {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+ function magi() {
+ if(now==-100) {
+			now = start;
+			
+		}
+			if(now<=100&&now>=0)
+			{
+			n = randInt(0, 1);
+			if(n==0) now--; else now++;
+			
+			}
+			else now = start;
+	$(document).ready(function(){
+      $("#ss").animate({
+        width: ''+now+'%'
+        }, 500);  
+//$("#ss").width(''+now+'%');			
+ });  
+	setTimeout(arguments.callee, '40');
+}
+
+ </script>
+ </head>
+ <body onload="magi()">
+	<div id="s">
+		<div id="ss"></div>		
+	</div>
+		<div id="status">
+		<div id="line_power"> </div>
+		<div id="line_it"> </div>
+		</div>
+ </body>
+</html>
